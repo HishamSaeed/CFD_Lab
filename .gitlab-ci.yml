@@ -1,0 +1,357 @@
+
+#  ==================================================================================================
+image: gitlab.lrz.de:5005/ge73cat/cfdlabcodeskeleton:ubuntu-cfd
+
+stages:
+  - Test_Clang_format
+  - Build
+  # - Generate_Data
+  - Unit_Testing_(Catch2) 
+  - Integraion_Testing_(Catch2) 
+  - System_Testing_(Bash_Script)
+
+Test Format: 
+    stage: Test_Clang_format
+    script:
+    - ./run-clang-format.py *.cpp
+    tags:
+    - CFD_Proj 
+
+build-linux:
+  stage: Build
+  script:
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+
+  artifacts:
+    paths:
+      - build/*    
+  tags:
+    # - CFD_Proj
+    - docker
+#  ==================================================================================================
+# Run Solver:
+#   stage: Generate_Data
+#   script:
+#   - cd build
+#   - ./sim -c -d
+#   tags:
+#   # - CFD_Proj
+#     - docker
+#   # cache:
+#   #   paths:
+#   #     - build/*
+#   artifacts:
+#     paths:
+#       - build/*
+#  ==================================================================================================
+B_N()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [B_N]
+# -----------------------------------------------------------------------------
+B_S()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [B_S]
+# -----------------------------------------------------------------------------
+B_E()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [B_E]
+#-----------------------------------------------------------------------------
+B_W()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [B_W]
+# -----------------------------------------------------------------------------
+B_NW()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [B_NW]
+# -----------------------------------------------------------------------------
+B_NE-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [B_NE]
+# -----------------------------------------------------------------------------
+B_SW()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [B_SW]
+# -----------------------------------------------------------------------------
+B_SE()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [B_SE]
+# -------------------------Karman Vortex Unit Testing--------------------------
+# -----------------------------------------------------------------------------
+calculate_dt_KV()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_dt_KV]
+# -----------------------------------------------------------------------------
+calculate_fg_KV()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_fg_KV]
+# -----------------------------------------------------------------------------
+calculate_RS_KV()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_RS_KV]
+# -----------------------------------------------------------------------------
+sor_KV()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [sor_KV]
+# -----------------------------------------------------------------------------
+calculate_uv_KV()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_uv_KV]
+# -------------------------Flow Over A Step Unit Testing-----------------------
+# -----------------------------------------------------------------------------
+calculate_dt_FS()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_dt_FS]   
+# -----------------------------------------------------------------------------
+calculate_fg_FS()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_fg_FS]
+# -----------------------------------------------------------------------------
+calculate_RS_FS()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_RS_FS]   
+# -----------------------------------------------------------------------------
+sor_FS()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [sor_FS]  
+# -----------------------------------------------------------------------------
+calculate_uv_FS()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_uv_FS]
+# -------------------------Natural Convection Unit Testing-----------------------
+# -----------------------------------------------------------------------------
+calculate_dt_NC()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_dt_NC]  
+# -----------------------------------------------------------------------------
+calculate_fg_NC()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_fg_NC]  
+# -----------------------------------------------------------------------------
+calculate_temp_NC()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_temp_NC] 
+# -----------------------------------------------------------------------------
+calculate_RS_NC()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_RS_NC]
+# -----------------------------------------------------------------------------
+sor_NC()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [sor_NC]
+# -----------------------------------------------------------------------------
+calculate_uv_NC()-test:
+  stage: Unit_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_uv_NC]
+
+
+#  ==================================================================================================
+# Integration testing
+# -------------------------Karman Vortex Integration Testing--------------------------
+# -----------------------------------------------------------------------------
+calculate_dt_fg_KV-test:
+  stage: Integraion_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_dt_fg_KV]
+# -----------------------------------------------------------------------------
+calculate_dt_fg_RS_KV-test:
+  stage: Integraion_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_dt_fg_RS_KV]
+# -----------------------------------------------------------------------------
+calculate_dt_fg_RS_sor_KV-test:
+  stage: Integraion_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_dt_fg_RS_sor_KV]
+# -----------------------------------------------------------------------------
+calculate_dt_fg_RS_sor_uv_KV-test:
+  stage: Integraion_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_dt_fg_RS_sor_uv_KV]
+# -------------------------Flow Over A Step Integration Testing--------------------------
+# -----------------------------------------------------------------------------
+calculate_dt_fg_FS-test:
+  stage: Integraion_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_dt_fg_FS]
+# -----------------------------------------------------------------------------
+calculate_dt_fg_RS_FS-test:
+  stage: Integraion_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_dt_fg_RS_FS]
+# -----------------------------------------------------------------------------
+calculate_dt_fg_RS_sor_FS-test:
+  stage: Integraion_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_dt_fg_RS_sor_FS]
+# -----------------------------------------------------------------------------
+calculate_dt_fg_RS_sor_uv_FS-test:
+  stage: Integraion_Testing_(Catch2)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd build/tests
+    - ./unit_tests2 [calculate_dt_fg_RS_sor_uv_FS]
+
+
+ #==================================================================================================
+#System testing    
+System_Testing-test:
+  stage: System_Testing_(Bash_Script)
+  tags:
+  # - CFD_Proj
+    - docker
+  script:
+    - cd tests
+    - ./System_Test.sh
