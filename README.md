@@ -135,14 +135,14 @@ To run the simulation follow the shown steps:
         Current supported optional feature
             debug grid                -d
 6. If you enter wrong command, you should see help printed for the flags to set
-7. Help for running ./sim -c Lid driven cavity
-                    ./sim -p plane shear flow
-                    ./sim -f flow over step
-                    ./sim -k karman vortex
-                    ./sim -n natural convection
-                    ./sim -ft fluid trap
-                    ./sim -r Rayleigh-Bénard Convection
-                   
+7. Help for running ./sim -c Lid driven cavity <br />
+                    ./sim -p plane shear flow <br />
+                    ./sim -f flow over step <br />
+                    ./sim -k karman vortex <br />
+                    ./sim -n natural convection <br />
+                    ./sim -ft fluid trap <br />
+                    ./sim -r Rayleigh-Bénard Convection <br />
+                    
 
 ## Folder Structure
 
