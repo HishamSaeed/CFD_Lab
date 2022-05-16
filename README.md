@@ -135,7 +135,8 @@ To run the simulation follow the shown steps:
         Current supported optional feature
             debug grid                -d
 6. If you enter wrong command, you should see help printed for the flags to set
-7. Help for running ./sim -c Lid driven cavity <br />
+7. Help for running <br />
+                    ./sim -c Lid driven cavity <br />
                     ./sim -p plane shear flow <br />
                     ./sim -f flow over step <br />
                     ./sim -k karman vortex <br />
