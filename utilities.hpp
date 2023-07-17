@@ -130,7 +130,7 @@ void write_matrix_less_precision(std::string fileName, matrix<double> &m,
 
 /*----------computing the hash for log files-------------*/
 #pragma region
-std::string get_md5hash(const std::string fname);
+// std::string get_md5hash(const std::string fname);
 #pragma endregion
 
 // Test pre commit changed mode

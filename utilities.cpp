@@ -307,83 +307,83 @@ void print_matrix(matrix<double> m, int xdim, int ydim) {
 #pragma endregion
 
 /*computing the hash for log files*/
-#pragma region
-std::string get_md5hash(const std::string fname) {
-  std::ifstream mySource;
-  mySource.open(fname, std::ios_base::binary);
-  mySource.seekg(0, std::ios_base::end);
-  int BUFFSIZE = mySource.tellg();
-  mySource.close();
+// #pragma region
+// std::string get_md5hash(const std::string fname) {
+//   std::ifstream mySource;
+//   mySource.open(fname, std::ios_base::binary);
+//   mySource.seekg(0, std::ios_base::end);
+//   int BUFFSIZE = mySource.tellg();
+//   mySource.close();
 
-  unsigned char digest[MD5_DIGEST_LENGTH];
+//   unsigned char digest[MD5_DIGEST_LENGTH];
 
-  std::stringstream ss;
-  std::string md5string;
+//   std::stringstream ss;
+//   std::string md5string;
 
-  char buffer[BUFFSIZE];
+//   char buffer[BUFFSIZE];
 
-  std::ifstream ifs(fname, std::ios::in | std::ifstream::binary);
-  // FILE * pFile;
-  // char * buffer;
-  // long lSize;
-  // size_t result;
+//   std::ifstream ifs(fname, std::ios::in | std::ifstream::binary);
+//   // FILE * pFile;
+//   // char * buffer;
+//   // long lSize;
+//   // size_t result;
 
-  // pFile = fopen ( fname.c_str() , "rb" );
-  // if (pFile==NULL) {fputs ("File error",stderr); exit (1);}
-  // fseek (pFile , 0 , SEEK_END);
-  // lSize = ftell (pFile);
-  // rewind (pFile);
+//   // pFile = fopen ( fname.c_str() , "rb" );
+//   // if (pFile==NULL) {fputs ("File error",stderr); exit (1);}
+//   // fseek (pFile , 0 , SEEK_END);
+//   // lSize = ftell (pFile);
+//   // rewind (pFile);
 
-  // // allocate memory to contain the whole file:
-  // buffer = (char*) malloc (sizeof(char)*lSize);
-  // if (buffer == NULL) {fputs ("Memory error",stderr); exit (2);}
+//   // // allocate memory to contain the whole file:
+//   // buffer = (char*) malloc (sizeof(char)*lSize);
+//   // if (buffer == NULL) {fputs ("Memory error",stderr); exit (2);}
 
-  MD5_CTX md5Context;
+//   MD5_CTX md5Context;
 
-  MD5_Init(&md5Context);
+//   MD5_Init(&md5Context);
 
-  // copy the file into the buffer:
-  // result = fread (buffer,1,lSize,pFile);
-  // if (result != lSize) {fputs ("Reading error",stderr); exit (3);}
-  // MD5_Update(&md5Context, &buffer, lSize);
-  // std::cout<<buffer<<std::endl;
+//   // copy the file into the buffer:
+//   // result = fread (buffer,1,lSize,pFile);
+//   // if (result != lSize) {fputs ("Reading error",stderr); exit (3);}
+//   // MD5_Update(&md5Context, &buffer, lSize);
+//   // std::cout<<buffer<<std::endl;
 
-  // std::stringstream oss;
-  // oss << ifs.rdbuf();
+//   // std::stringstream oss;
+//   // oss << ifs.rdbuf();
 
-  // const std::string& file_str = oss.str();
-  // const char* cstr = file_str.c_str();
-  while (ifs.good()) {
-    ifs.read(buffer, BUFFSIZE);
-    MD5_Update(&md5Context, &buffer, ifs.gcount());
-  }
+//   // const std::string& file_str = oss.str();
+//   // const char* cstr = file_str.c_str();
+//   while (ifs.good()) {
+//     ifs.read(buffer, BUFFSIZE);
+//     MD5_Update(&md5Context, &buffer, ifs.gcount());
+//   }
 
-  if (ifs) {
-    std::cout << fname << " couldn't be opened\n";
-    exit(1);
-  }
-  // std::cout<<"for file"<<fname<<"\n"<<cstr<<"\n";
+//   if (ifs) {
+//     std::cout << fname << " couldn't be opened\n";
+//     exit(1);
+//   }
+//   // std::cout<<"for file"<<fname<<"\n"<<cstr<<"\n";
 
-  // oss.seekg(0, std::ios::end);
-  // int size = oss.tellg();
+//   // oss.seekg(0, std::ios::end);
+//   // int size = oss.tellg();
 
-  ifs.close();
-  // fclose (pFile);
-  // free (buffer);
+//   ifs.close();
+//   // fclose (pFile);
+//   // free (buffer);
 
-  int res = MD5_Final(digest, &md5Context);
+//   int res = MD5_Final(digest, &md5Context);
 
-  if (res == 0) // hash failed
-    return {};  // or raise an exception
+//   if (res == 0) // hash failed
+//     return {};  // or raise an exception
 
-  // set up stringstream format
-  ss << std::hex << std::uppercase << std::setfill('0');
+//   // set up stringstream format
+//   ss << std::hex << std::uppercase << std::setfill('0');
 
-  for (unsigned char uc : digest)
-    ss << std::setw(2) << (int)uc;
+//   for (unsigned char uc : digest)
+//     ss << std::setw(2) << (int)uc;
 
-  md5string = ss.str();
+//   md5string = ss.str();
 
-  return md5string;
-}
-#pragma endregion
+//   return md5string;
+// }
+// #pragma endregion
