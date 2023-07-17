@@ -2,14 +2,14 @@
 #include "helper.hpp"
 #include "vector"
 #include <stdio.h>
-#include <vtk-7.1/vtkCellData.h>
-#include <vtk-7.1/vtkDoubleArray.h>
-#include <vtk-7.1/vtkPointData.h>
-#include <vtk-7.1/vtkPoints.h>
-#include <vtk-7.1/vtkSmartPointer.h>
-#include <vtk-7.1/vtkStructuredGrid.h>
-#include <vtk-7.1/vtkStructuredGridWriter.h>
-#include <vtk-7.1/vtkTuple.h>
+#include <vtkCellData.h>
+#include <vtkDoubleArray.h>
+#include <vtkPointData.h>
+#include <vtkPoints.h>
+#include <vtkSmartPointer.h>
+#include <vtkStructuredGrid.h>
+#include <vtkStructuredGridWriter.h>
+#include <vtkTuple.h>
 
 // void write_vtkFile(const char *szProblem, int timeStepNumber, double xlength,
 //                    double ylength, int imax, int jmax, double dx, double dy,

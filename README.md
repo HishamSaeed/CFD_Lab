@@ -36,6 +36,14 @@ set(gpp9 True)
 If you have a version lower than 9, then you don't have to modify the `CMakeLists.txt` file.
 
 This will affect how we are using the C++ filesystem library, which is available already in GCC 7 as an experimental feature.
+## Setup of VTK (Ubuntu **22.04.2**)
+Do not install `libvtk9-dev` because it has a conflict issue with paraview
+
+```
+apt update &&
+apt upgrade &&
+apt install libvtk7-dev
+```
 
 ### Setup of VTK and GCC 9 (Ubuntu **20.04**)
 
