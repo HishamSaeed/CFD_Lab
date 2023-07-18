@@ -5,7 +5,7 @@
 
 void upload_file(std::string dirName) {
     // Initialize storage account
-    azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse("DefaultEndpointsProtocol=https;AccountName=avicenafilestorage;AccountKey=1VMYfUZvcEmP0uAc1cMFRAM1FcNICV4ycE5GnNI4nAAujU+skHdJPmFd1hNitxJANCWJYarOLA0J+AStc1Pi5Q==;EndpointSuffix=core.windows.net");
+    azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse("");
 
     // Create a blob container
     azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();

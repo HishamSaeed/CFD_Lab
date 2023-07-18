@@ -270,9 +270,10 @@ void solve_cfd(int argn, char **args) {
   // Output values for visualization
   VTKHelper::printVTKFile(domain, dx, dy, vtkFileName, Temp_Results_s, n,
                           temp_flag);
+  printf("\x1B[32m vtk file written successfully\033[0m\n");
 
   upload_file(vtkFileName);
-  printf("\x1B[32m vtk file written successfully\033[0m\n");
+  removeDirectory();
 #pragma endregion
 
   return;
