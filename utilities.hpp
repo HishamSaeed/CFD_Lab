@@ -9,7 +9,6 @@
 #include <string>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <filesystem>
 
 /** This File is for the utilities, which includes
  * methods for reading input flags as well the data
@@ -112,8 +111,6 @@ std::vector<std::string> ParseTestingProblemFlags(int argc, const char *argv[],
 void clear_output_dir();
 
 void clear_output_dir_test();
-
-void removeDirectory();
 #pragma endregion
 
 /*-----------Printing methods-----------------------------------------*/

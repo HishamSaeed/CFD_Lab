@@ -248,19 +248,6 @@ void clear_output_dir_test() {
     system(("exec rm -r " + dir + "*").c_str());
   }
 }
-
-void removeDirectory()
-{
-    try
-    {
-        std::filesystem::remove_all(Temp_Results_s);
-        std::cout << "Directory '" << Temp_Results_s << "' and its contents have been removed." << std::endl;
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "Failed to remove directory: " << e.what() << std::endl;
-    }
-}
 #pragma endregion
 
 /*----------I/P & O/P streams----------------*/

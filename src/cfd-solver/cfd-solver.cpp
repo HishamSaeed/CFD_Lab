@@ -273,7 +273,6 @@ void solve_cfd(int argn, char **args) {
   printf("\x1B[32m vtk file written successfully\033[0m\n");
 
   upload_file(vtkFileName);
-  removeDirectory();
 #pragma endregion
 
   return;
