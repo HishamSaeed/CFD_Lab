@@ -41,10 +41,13 @@ endif()
 
 # Creating the executable of our project and the required dependencies
 # the executable is called sim
-add_executable(sim main.cpp sor.cpp helper.cpp init.cpp visual.cpp boundary_val.cpp uvp.cpp grid.cpp cell.cpp utilities.cpp)
+add_executable(sim main.cpp sor.cpp helper.cpp init.cpp visual.cpp boundary_val.cpp uvp.cpp grid.cpp cell.cpp utilities.cpp 
+./src/cfd-solver/cfd-solver.cpp
+./src/azure-blob-storage/azure-blob-storage.cpp
+)
 # if you use external libraries you have to link them like 
 # target_link_libraries(sim PRIVATE MPI::MPI_CXX Boost::filesystem)
-target_link_libraries(sim PRIVATE ${VTK_LIBRARIES} OpenSSL::Crypto)
+target_link_libraries(sim PRIVATE ${VTK_LIBRARIES} OpenSSL::Crypto azurestorage cpprest)
 
 # If you write tests, you can include your subdirectory (in this case tests) as done here
 # Testing
