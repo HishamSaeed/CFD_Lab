@@ -4,6 +4,10 @@ include_directories (${CFDLAB_SOURCE_DIR})
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 find_package(OpenSSL REQUIRED)
 
+add_executable(test_sor iterative-solver_test.cpp 
+../utilities.cpp 
+../src/cfd-solver/iterative-solver.cpp ) 
+target_link_libraries(test_sor PRIVATE OpenSSL::Crypto)
 # Test Executables
 # add_executable(test_factorial sample_test.cpp ) 
 # add_executable(unit_tests ws1_unit_testing.cpp ../init.cpp ../helper.cpp ../grid.cpp 
