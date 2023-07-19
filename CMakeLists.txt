@@ -43,6 +43,7 @@ endif()
 # the executable is called sim
 add_executable(sim main.cpp sor.cpp helper.cpp init.cpp visual.cpp boundary_val.cpp uvp.cpp grid.cpp cell.cpp utilities.cpp 
 ./src/cfd-solver/cfd-solver.cpp
+./src/cfd-solver/iterative-solver.cpp
 ./src/azure-blob-storage/azure-blob-storage.cpp
 )
 # if you use external libraries you have to link them like 
