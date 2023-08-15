@@ -11,9 +11,9 @@ class SolverResourceFactory : public IResourceFactory {
     
     private:
 
-        float calculate(float num1, float num2, string operation);
-        tuple<float, float, string> get_path_parameters(const shared_ptr<restbed::Session> session);
-        string to_json(float result);
+        std::string calculate(string problem);
+        std::string get_path_parameters(const shared_ptr<restbed::Session> session);
+        string to_json(std::string result);
         void get_handler(const shared_ptr<restbed::Session>);
         
         shared_ptr<restbed::Resource> _resource;
