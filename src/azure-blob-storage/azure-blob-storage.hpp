@@ -3,7 +3,7 @@
 #include <fstream>
 #include <was/blob.h>
 #include <was/storage_account.h>
-#include "json.hpp"
+#include "../json.hpp"
 
 void upload_file(std::string dirName);
 

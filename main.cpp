@@ -1,5 +1,7 @@
 #include "./src/cfd-solver/cfd-solver.hpp"
-
+#include "./src/rest-api/api-service/RestService.hpp"
+#include "./src/rest-api/api-service/RestServiceSettingsFactory.hpp"
+#include "./src/rest-api/solver-publisher/api-publishers/SolverResourceFactory.hpp"
 /**
  * The main operation reads the configuration file, initializes the scenario and
  * contains the main loop. So here are the individual steps of the algorithm:
@@ -36,7 +38,13 @@
 
 int main(int argn, char **args) {
 
-  solve_cfd(argn, args);
+  auto solver_resource_factory = make_shared<SolverResourceFactory>();
+  auto solver_service_settings_factory = make_shared<RestServiceSettingsFactory>();
+    
+  RestService solver_service {solver_resource_factory, solver_service_settings_factory};
+    
+  solver_service.start();
+  // solve_cfd(argn, args);
 
   return 0;
 }
