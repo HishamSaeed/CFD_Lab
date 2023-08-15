@@ -238,6 +238,17 @@ void clear_output_dir() {
   }
 }
 
+void remove_output_dir() {
+  struct stat st = {0};
+
+  if (stat(Temp_Results_s.c_str(), &st) != -1) {
+    system(("exec rm -r " + Temp_Results_s).c_str());
+  }
+  if (stat(Temp_Test_Data_s.c_str(), &st) != -1) {
+    system(("exec rm -r " + Temp_Test_Data_s).c_str());
+  } 
+}
+
 void clear_output_dir_test() {
   struct stat st = {0};
   std::string dir = test_path + Cmp_Test_Data;
