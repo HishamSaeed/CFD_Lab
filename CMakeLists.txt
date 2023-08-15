@@ -44,14 +44,14 @@ endif()
 add_executable(sim main.cpp sor.cpp helper.cpp init.cpp visual.cpp boundary_val.cpp uvp.cpp grid.cpp cell.cpp utilities.cpp 
 ./src/cfd-solver/cfd-solver.cpp
 ./src/cfd-solver/iterative-solver.cpp
-./src/azure-blob-storage/azure-blob-storage.cpp
+# ./src/azure-blob-storage/azure-blob-storage.cpp
 ./src/rest-api/api-service/RestService.cpp
 ./src/rest-api/api-service/RestServiceSettingsFactory.cpp
 ./src/rest-api/solver-publisher/api-publishers/SolverResourceFactory.cpp
 )
 # if you use external libraries you have to link them like 
 # target_link_libraries(sim PRIVATE MPI::MPI_CXX Boost::filesystem)
-target_link_libraries(sim PRIVATE ${VTK_LIBRARIES} OpenSSL::Crypto azurestorage cpprest restbed)
+target_link_libraries(sim PRIVATE ${VTK_LIBRARIES} OpenSSL::Crypto restbed)
 
 # If you write tests, you can include your subdirectory (in this case tests) as done here
 # Testing

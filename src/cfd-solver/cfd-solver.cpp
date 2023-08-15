@@ -3,7 +3,7 @@
 #include <iostream>
 #include <unistd.h>
 #include "cfd-solver.hpp"
-#include "../azure-blob-storage/azure-blob-storage.hpp"
+// #include "../azure-blob-storage/azure-blob-storage.hpp"
 #include "../../boundary_val.hpp"
 #include "../../helper.hpp"
 #include "../../init.hpp"
@@ -271,10 +271,10 @@ void solve_cfd(int argn, char **args) {
   VTKHelper::printVTKFile(domain, dx, dy, vtkFileName, Temp_Results_s, n,
                           temp_flag);
   printf("\x1B[32m vtk file written successfully\033[0m\n");
-  printf("\x1B[96m Uploading vtk files to storage account ...\033[0m\n");
-  upload_file(vtkFileName);
-  printf("\x1B[32m vtk files uploaded to storage account successfully\033[0m\n");
-  remove_output_dir();
+  // printf("\x1B[96m Uploading vtk files to storage account ...\033[0m\n");
+  // upload_file(vtkFileName);
+  // printf("\x1B[32m vtk files uploaded to storage account successfully\033[0m\n");
+  // remove_output_dir();
 #pragma endregion
 
   return;
