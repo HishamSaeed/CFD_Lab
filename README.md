@@ -186,6 +186,16 @@ For Log Data for Testing, 3 directories
                   This directory where you should read vtk files by paraview to check results after each simulation 
                   Created and modified by tests but not solver
 
+## Third Party Software
+* JSON for Modern C++ library (nlohmann/json), just download the hpp file nlohmann repository https://github.com/nlohmann/json/tree/develop/single_include/nlohmann and include it in your project.
+
+## Credentials
+* For accessing the Blob storage account, create a dir with the name `credentials` and add the storage account access token to a JSON file under the name `access-token.json` as follows
+```
+{
+    "access_token": "<storage-account-access-token>"
+}
+```
 ## Skeleton Modification
 
 The code skeleton did not change, only 2 methods were added to the grid class (grid.hpp grid.cpp), these 2 methods created to return 2D array

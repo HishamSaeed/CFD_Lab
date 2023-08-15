@@ -5,7 +5,7 @@
 
 void upload_file(std::string dirName) {
     // Initialize storage account
-    azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse("");
+    azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(parse_access_token());
 
     // Create a blob container
     azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();
@@ -45,4 +45,23 @@ void delete_dir(std::string dirName, azure::storage::list_blob_item_iterator seg
             }
         }
     }
+}
+
+std::string parse_access_token() {
+    // Read the JSON file
+    std::ifstream file("../credentials/access-token.json");
+    if (!file.is_open()) {
+        std::cerr << "Error opening JSON file." << std::endl;
+        return NULL;
+    }
+
+    // Parse JSON data
+    nlohmann::json json_data;
+    file >> json_data;
+    file.close();
+
+    // Get the access token
+    std::string access_token = json_data["access_token"];
+
+    return access_token;
 }
