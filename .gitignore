@@ -12,3 +12,6 @@
 
 #ignore comparision directory
 /Cmp_Test_Data
+
+#ignore credentials directory
+/credentials
