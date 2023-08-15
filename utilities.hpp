@@ -111,6 +111,8 @@ std::vector<std::string> ParseTestingProblemFlags(int argc, const char *argv[],
 void clear_output_dir();
 
 void clear_output_dir_test();
+
+void remove_output_dir();
 #pragma endregion
 
 /*-----------Printing methods-----------------------------------------*/
