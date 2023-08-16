@@ -68,7 +68,9 @@ CASABLANCA_DIR=<path to Casablanca> CXX=g++-5.1 cmake .. -DCMAKE_BUILD_TYPE=Rele
 make
 ```
 In our case no need to identify CASABLANCA_DIR since it is going to be installed(cpprest) using apt, and the lib
-should be located in `/usr/lib/x86_64-linux-gnu/libcpprest.so`
+should be located in `/usr/lib/x86_64-linux-gnu/libcpprest.so`. Also not necessary to specify g++ version, it is enough tor run 
+`cmake .. -DCMAKE_BUILD_TYPE=Release`.
+
 5. To install the binaries run 
 `sudo make install`, the `.so` will be installed in `usr/local/lib` and header files in `/usr/local/include`
 
