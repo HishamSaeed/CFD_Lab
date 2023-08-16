@@ -45,6 +45,34 @@ apt upgrade &&
 apt install libvtk7-dev
 ```
 
+### Setup of Project on **Ubuntu 22.04 VM**
+```
+sudo apt update &&
+sudo apt install build-essential cmake libvtk7-dev libfmt-dev restbed catch libcpprest-dev
+```
+
+For installing Microsoft Azure c++ sdk
+follow the instructions as indicated in the sdk repository https://github.com/Azure/azure-storage-cpp
+1. Clone the repository
+`git clone https://github.com/Azure/azure-storage-cpp.git`
+2. Install additional dependencies
+`sudo apt-get install libxml2-dev uuid-dev`
+3. Install additional dependencies for running cmake
+`sudo apt install libboost-log-dev libboost-locale-dev`
+4. Build the SDK for Release:
+```
+cd azure-storage-cpp/Microsoft.WindowsAzure.Storage
+mkdir build.release
+cd build.release
+CASABLANCA_DIR=<path to Casablanca> CXX=g++-5.1 cmake .. -DCMAKE_BUILD_TYPE=Release
+make
+```
+In our case no need to identify CASABLANCA_DIR since it is going to be installed(cpprest) using apt, and the lib
+should be located in `/usr/lib/x86_64-linux-gnu/libcpprest.so`
+5. To install the binaries run 
+`sudo make install`, the `.so` will be installed in `usr/local/lib` and header files in `/usr/local/include`
+
+
 ### Setup of VTK and GCC 9 (Ubuntu **20.04**)
 
 ```
