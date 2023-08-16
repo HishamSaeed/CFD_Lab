@@ -25,7 +25,7 @@ void upload_file(std::string dirName) {
     delete_dir(dirName, segment);
 
     // Upload a blob from a file
-    for (const auto& entry : std::filesystem::directory_iterator("/home/hisham/dev/repos_test/CFD_Lab/Temp_Results/")) {
+    for (const auto& entry : std::filesystem::directory_iterator("../Temp_Results/")) {
         concurrency::streams::istream input_stream = concurrency::streams::file_stream<uint8_t>::open_istream(_XPLATSTR(entry.path())).get();
         azure::storage::cloud_block_blob blob1 = container.get_block_blob_reference(_XPLATSTR(dirName + "/" + entry.path().filename().string()));
         blob1.upload_from_stream(input_stream);
