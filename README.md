@@ -73,7 +73,7 @@ should be located in `/usr/lib/x86_64-linux-gnu/libcpprest.so`. Also not necessa
 
 5. To install the binaries run 
 `sudo make install`, the `.so` will be installed in `usr/local/lib` and header files in `/usr/local/include`
-
+if you get `error while loading shared libraries:` try reloading the cache by running `sudo ldconfig`
 
 ### Setup of VTK and GCC 9 (Ubuntu **20.04**)
 
